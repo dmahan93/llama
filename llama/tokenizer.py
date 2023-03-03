@@ -1,6 +1,7 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates.
 # This software may be used and distributed according to the terms of the GNU General Public License version 3.
-
+import torch
+import numpy as np
 from sentencepiece import SentencePieceProcessor
 from logging import getLogger
 from typing import List
@@ -34,7 +35,18 @@ class Tokenizer:
             t = [self.bos_id] + t
         if eos:
             t = t + [self.eos_id]
-        return t
+        return {"input_ids": torch.from_numpy(np.array([t]))}
 
-    def decode(self, t: List[int]) -> str:
+    def __call__(self, s, padding=False, add_special_tokens=False, return_tensors=None):
+        return self.encode(s, True, False)
+
+    def decode(self, t, **kwargs) -> str:
+        try:
+            t = t.cpu().numpy().tolist()
+            print("tensor", t)
+        except AttributeError as err:
+            print("list", t)
+        if len(t) == 1:
+            if type(t[0]) is list:
+                t = t[0]
         return self.sp_model.decode(t)
