@@ -23,7 +23,7 @@ from torch import nn
 #     max_batch_size: int = 32
 #     max_seq_len: int = 1024
 
-class LLAMAConfig(PretrainedConfig):
+class LLaMAConfig(PretrainedConfig):
     r"""
     This is the configuration class to store the configuration of a [`GPTJModel`]. It is used to instantiate a GPT-J
     model according to the specified arguments, defining the model architecture. Instantiating a configuration with the
@@ -119,7 +119,7 @@ class LLAMAConfig(PretrainedConfig):
             bos_token_id=bos_token_id, eos_token_id=eos_token_id, tie_word_embeddings=tie_word_embeddings, **kwargs
         )
 
-def convert(config: LLAMAConfig)->ModelArgs:
+def convert(config: LLaMAConfig)->ModelArgs:
     return ModelArgs(
         dim=config.n_embd,
         n_layers=config.n_layer,
@@ -134,7 +134,7 @@ def convert(config: LLAMAConfig)->ModelArgs:
 
 class LLaMAForCausalLM(PreTrainedModel):
     _keys_to_ignore_on_load_missing = [r"h\.\d+\.attn\.masked_bias", r"h\.\d+\.attn\.bias"]
-    config_class = LLAMAConfig
+    config_class = LLaMAConfig
     def __init__(self, config):
         super().__init__(config)
         self.transformer = Transformer(convert(config))

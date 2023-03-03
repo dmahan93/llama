@@ -14,7 +14,7 @@ from pathlib import Path
 from fairscale.nn.model_parallel.initialize import initialize_model_parallel
 
 from llama import ModelArgs, Tokenizer, LLaMA
-from llama.hf_import import LLaMAForCausalLM, LLAMAConfig
+from llama.hf_import import LLaMAForCausalLM, LLaMAConfig
 from transformers import DebertaV2Tokenizer, convert_slow_tokenizer, PreTrainedTokenizerFast
 
 
@@ -44,7 +44,7 @@ def load(ckpt_dir: str, tokenizer_path: str, local_rank: int, world_size: int) -
     sptokenizer = Tokenizer(model_path=tokenizer_path)
     model_args.vocab_size = sptokenizer.n_words
     torch.set_default_tensor_type(torch.cuda.HalfTensor)
-    config = LLAMAConfig(
+    config = LLaMAConfig(
         sptokenizer.n_words, 2048, model_args.dim, model_args.n_layers, model_args.n_heads, multiple_of=model_args.multiple_of, norm_eps=model_args.norm_eps,
         bos_token_id=sptokenizer.bos_id, eos_token_id=sptokenizer.eos_id
     )

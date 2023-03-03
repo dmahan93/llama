@@ -1,8 +1,8 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline, TextGenerationPipeline, DebertaV2Tokenizer, PreTrainedTokenizer
 from llama.tokenizer import Tokenizer
-from llama.hf_import import LLAMAConfig, LLaMAForCausalLM
-LLAMAConfig.register_for_auto_class()
+from llama.hf_import import LLaMAConfig, LLaMAForCausalLM
+LLaMAConfig.register_for_auto_class()
 LLaMAForCausalLM.register_for_auto_class("AutoModelForCausalLM")
 
 
