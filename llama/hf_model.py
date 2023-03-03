@@ -3,6 +3,11 @@ from transformers import PreTrainedModel
 # Copyright (c) Meta Platforms, Inc. and affiliates.
 # This software may be used and distributed according to the terms of the GNU General Public License version 3.
 
+"""
+Updated to use caching and to work in a single device, I'm too lazy to figure out how to shove Row/Column parallel
+linears into transformers. Good luck to whomever gets stuck on that task.
+"""
+
 from typing import Optional, Tuple
 from dataclasses import dataclass
 import math

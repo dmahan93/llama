@@ -1,3 +1,9 @@
+"""
+Lovingly copy + pasted from GPTJ huggingface examples and hacked to work with transformers
+
+This is not good code, and you'll probably hate me when you read this, I also hate this.
+"""
+
 import torch
 from typing import Optional, Tuple, List, Union
 from transformers import PreTrainedModel, PretrainedConfig, GPTJPreTrainedModel

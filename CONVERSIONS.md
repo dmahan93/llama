@@ -19,4 +19,4 @@ You can then use it like in the [hf_example.py](hf_example.py) script
 
 # Questions? Support?
 
-lmao, good luck
+lmao, good luck, I believe in you 🙏

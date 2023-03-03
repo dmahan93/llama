@@ -1,6 +1,6 @@
 # Resharding and HF conversion
 
-
+[Conversions README](CONVERSIONS.md)
 
 # LLaMA 
 
