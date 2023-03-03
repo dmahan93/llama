@@ -46,7 +46,9 @@ class Tokenizer:
             print("tensor", t)
         except AttributeError as err:
             print("list", t)
-        if len(t) == 1:
+        if type(t) is int:
+            t = [t]
+        elif len(t) == 1:
             if type(t[0]) is list:
                 t = t[0]
         return self.sp_model.decode(t)
